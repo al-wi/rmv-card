@@ -66,7 +66,12 @@ class RmvCard extends HTMLElement {
       'direction': state.attributes['direction']
     }
     const journeys = [next].concat(state.attributes['next_departures'])
+    var numIter = 0;
     for (const journey of journeys) {
+      numIter++;
+      if(numIter > 4) // limit to 4 rows max
+        break;
+      
       var destination = journey['destination']
       if (typeof journey['destination'] === 'undefined') {
         destination = journey['direction']
@@ -76,7 +81,7 @@ class RmvCard extends HTMLElement {
 
       const jtime = new Date(journey['departure_time'] + 'Z')
       //const time = parseInt((jtime.getTime() - utc) / 60000)
-      const time = `${jtime.getHours()}:${jtime.getMinutes()}`
+      const time = `${(jtime.getHours() < 10 ? '0' : '') + jtime.getHours()}:${(jtime.getMinutes() < 10 ? '0' : '') + jtime.getMinutes()}`
 
       tablehtml += `
           <tr>

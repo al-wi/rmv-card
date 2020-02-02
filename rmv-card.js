@@ -75,7 +75,8 @@ class RmvCard extends HTMLElement {
       const product = journey['product']
 
       const jtime = new Date(journey['departure_time'] + 'Z')
-      const time = parseInt((jtime.getTime() - utc) / 60000)
+      //const time = parseInt((jtime.getTime() - utc) / 60000)
+      const time = `${jtime.getHours()}:${jtime.getMinutes()}`
 
       tablehtml += `
           <tr>

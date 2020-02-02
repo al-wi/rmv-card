@@ -2,7 +2,7 @@ class RmvCard extends HTMLElement {
   set hass (hass) {
     const entityId = this.config.entity
     const state = hass.states[entityId]
-    const name = state.attributes['friendly_name']
+    const name = this.config.name ? this.config.name : state.attributes['friendly_name']
 
     if (!this.content) {
       const card = document.createElement('ha-card')

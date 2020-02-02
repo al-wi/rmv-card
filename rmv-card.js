@@ -79,7 +79,7 @@ class RmvCard extends HTMLElement {
       const linename = journey['line']
       const product = journey['product']
 
-      const jtime = new Date(journey['departure_time'] + 'Z')
+      const jtime = new Date(journey['departure_time'])
       //const time = parseInt((jtime.getTime() - utc) / 60000)
       const time = `${(jtime.getHours() < 10 ? '0' : '') + jtime.getHours()}:${(jtime.getMinutes() < 10 ? '0' : '') + jtime.getMinutes()}`
 
